@@ -3,17 +3,21 @@ class ItemsController < ApplicationController
   #before_action :move_to_index, except: [:index, :show]
 
   def index
-  #  @items = Item.all
+    @items = Item.all
   end
 
-  #def new
-   # @item = Item.new
-  #end
+  def new
+    @item = Item.new
+  end
 
-  #def create
-   # Item.create(item_params)
-   # redirect_to '/'
-  #end
+  def create
+    @item = Item.new(item_params)
+    if @item.save
+      redirect_to '/'
+    else
+      render :new
+    end
+  end
 
   #def destroy
    # item = Item.find(params[:id])
@@ -33,11 +37,11 @@ class ItemsController < ApplicationController
   #def show
   #end
 
-  #private
+  private
 
-  #def item_params
-  #  params.require(:item).permit(:nickname, :image, :text).merge(user_ide: current_user.id)
-  #end
+  def item_params
+    params.require(:item).permit(:nickname, :image, :description, :category_id, :condition_id, :shipping_fee_id, :prefecture_id, :shipping_time_id, :price).merge(user_ide: current_user.id)
+  end
 
   #def move_to_index
    # return if user_signed_in?
