@@ -1,17 +1,17 @@
-class ItemsController < ApplicationController
+class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   #before_action :move_to_index, except: [:index, :show]
 
   def index
-    @items = Item.all
+    @product = Product.all
   end
 
   def new
-    @item = Item.new
+    @product = Product.new
   end
 
   def create
-    @item = Item.new(item_params)
+    @product = Product.new(product_params)
     if @item.save
       redirect_to '/'
     else
@@ -20,8 +20,8 @@ class ItemsController < ApplicationController
   end
 
   #def destroy
-   # item = Item.find(params[:id])
-   # item.destroy
+   # product = Product.find(params[:id])
+   # product.destroy
    # redirect_to root_path
   #end
 
@@ -29,8 +29,8 @@ class ItemsController < ApplicationController
   #end
 
   #def update
-   # item = Item.find(params[:id])
-   # item.update(item_params)
+   # product = Product.find(params[:id])
+   # product.update(item_params)
    # redirect_to root_path
   #end
 
@@ -39,8 +39,8 @@ class ItemsController < ApplicationController
 
   private
 
-  def item_params
-    params.require(:item).permit(:nickname, :image, :description, :category_id, :condition_id, :shipping_fee_id, :prefecture_id, :shipping_time_id, :price).merge(user_ide: current_user.id)
+  def product_params
+    params.require(:product).permit(:nickname, :image, :description, :category_id, :condition_id, :shipping_fee_id, :prefecture_id, :shipping_time_id, :price).merge(user_id: current_user.id)
   end
 
   #def move_to_index
