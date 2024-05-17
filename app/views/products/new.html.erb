@@ -7,7 +7,6 @@
     <h2 class="items-sell-title">商品の情報を入力</h2>
     <%= form_with model: @product, local: true do |f| %>
 
-    
     <%= render 'shared/error_messages', model: f.object %>
     
     <%# 商品画像 %>
@@ -80,7 +79,7 @@
           発送までの日数
           <span class="indispensable">必須</span>
         </div>
-        <%= f.collection_select(:shipping_time_id, ShippingDuration.all, :id, :name, {}, {class:"select-box", id:"item-scheduled-delivery"}) %>
+        <%= f.collection_select(:shipping_duration_id, ShippingDuration.all, :id, :name, {}, {class:"select-box", id:"item-scheduled-delivery"}) %>
       </div>
     </div>
     <%# /配送について %>
