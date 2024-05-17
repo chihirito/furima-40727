@@ -6,6 +6,7 @@ class Product < ApplicationRecord
   belongs_to :prefecture 
   belongs_to :shipping_duration 
   belongs_to :shipping_fee 
+  has_one_attached :image
 
   validates :category_id, numericality: { other_than: 1 }
   validates :condition_id, numericality: { other_than: 1 }

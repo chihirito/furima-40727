@@ -43,6 +43,7 @@ class ProductsController < ApplicationController
     params.require(:product).permit(:nickname, :image, :description, :category_id, :condition_id, :shipping_fee_id, :prefecture_id, :shipping_time_id, :price).merge(user_id: current_user.id)
   end
 
+
   #def move_to_index
    # return if user_signed_in?
 
