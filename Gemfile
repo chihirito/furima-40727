@@ -55,6 +55,11 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'gimei'
+  gem 'rubocop-capybara'
+  gem 'rubocop-factory_bot'
+  gem 'rubocop-rails'
+  gem 'rubocop-rspec_rails'
+
 end
 
 group :development do
@@ -84,3 +89,4 @@ gem 'devise'
 gem 'active_hash'
 gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
+gem "rubocop-rspec", "~> 2.29"

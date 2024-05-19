@@ -4,7 +4,7 @@ RSpec.describe Product, type: :model do
   before do
     @product = FactoryBot.build(:product)
   end
-  
+
   describe '商品出品機能' do
     context '商品出品ができる場合' do
       it '全ての項目が存在すれば出品できる' do
@@ -14,7 +14,7 @@ RSpec.describe Product, type: :model do
 
     context '商品出品ができない場合' do
       it 'imageが空では出品できない' do
-        @product.image = nil 
+        @product.image = nil
         @product.valid?
         expect(@product.errors.full_messages).to include("Image can't be blank")
       end
@@ -26,13 +26,13 @@ RSpec.describe Product, type: :model do
       end
 
       it 'descriptionが空では出品できない' do
-        @product.description = '' 
+        @product.description = ''
         @product.valid?
         expect(@product.errors.full_messages).to include("Description can't be blank")
       end
 
       it 'category_idが空では出品できない' do
-        @product.category_id = nil 
+        @product.category_id = nil
         @product.valid?
         expect(@product.errors.full_messages).to include("Category can't be blank")
       end
@@ -44,7 +44,7 @@ RSpec.describe Product, type: :model do
       end
 
       it 'condition_idが空では出品できない' do
-        @product.condition_id = nil 
+        @product.condition_id = nil
         @product.valid?
         expect(@product.errors.full_messages).to include("Condition can't be blank")
       end
@@ -100,19 +100,21 @@ RSpec.describe Product, type: :model do
       it 'priceが数値でないと出品できない' do
         @product.price = 'abc'
         @product.valid?
-        expect(@product.errors.full_messages).to include("Price is not a number")
+        expect(@product.errors.full_messages).to include('Price is not a number')
       end
 
       it 'priceが300円未満では出品できない' do
         @product.price = 299
         @product.valid?
-        expect(@product.errors.full_messages).to include("Price must be greater than or equal to 300")
+        expect(@product.errors.full_messages).to include('Price must be greater than or equal to 300')
       end
 
       it 'priceが9,999,999円を超えると出品できない' do
-        @product.price = 10000000
+        @product.price = 10_000_000
         @product.valid?
-        expect(@product.errors.full_messages).to include("Price must be less than or equal to 9999999")
+        expect(@product.errors.full_messages).to include(
+          "Price must be less than or equal to 9999999"
+        )
       end
     end
   end

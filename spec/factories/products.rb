@@ -11,7 +11,8 @@ FactoryBot.define do
     price { 1000 }
 
     after(:build) do |product|
-      product.image.attach(io: File.open(Rails.root.join('public', 'images', 'test_image.png')), filename: 'test_image.png', content_type: 'image/png')
+      product.image.attach(io: File.open(Rails.root.join('public', 'images', 'test_image.png')), filename: 'test_image.png',
+                           content_type: 'image/png')
     end
   end
 end
