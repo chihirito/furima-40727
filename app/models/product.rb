@@ -13,7 +13,7 @@ class Product < ApplicationRecord
   validates :image, presence: { message: "can't be blank" }
   validates :name, presence: { message: "can't be blank" }
   validates :description, presence: { message: "can't be blank" }
-  validates :price, presence: { message: "can't be blank" }, numericality: { only_integer: true, message: "is not a number" }
+  validates :price, presence: { message: "can't be blank" }, numericality: { only_integer: true,greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is not a number" }
 
   validates :category_id, numericality: { other_than: 1, message: "can't be blank" }
   validates :condition_id, numericality: { other_than: 1, message: "can't be blank" }
