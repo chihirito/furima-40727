@@ -130,7 +130,7 @@
       <% if @products.present? %>
         <% @products.each do |product| %>
           <li class='list'>
-            <%= link_to product_path(product) do %>
+            <%# link_to product_path(product) do %>
               <%# ①商品画像 %>
               <div class='item-img-content'>
                 <%= image_tag url_for(product.image), class: "item-img" %>
