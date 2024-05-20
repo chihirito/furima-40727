@@ -116,6 +116,12 @@ RSpec.describe Product, type: :model do
           "Price must be less than or equal to 9999999"
         )
       end
+
+      it 'userが紐づいていないと出品できない' do
+        @product.user = nil
+        @product.valid?
+        expect(@product.errors.full_messages).to include("User must exist")
+      end
     end
   end
 end

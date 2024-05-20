@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   # before_action :move_to_index, except: [:index, :show]
 
   def index
-    @product = Product.all
+    #@product = Product.all
   end
 
   def new
