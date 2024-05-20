@@ -113,14 +113,14 @@ RSpec.describe Product, type: :model do
         @product.price = 10_000_000
         @product.valid?
         expect(@product.errors.full_messages).to include(
-          "Price must be less than or equal to 9999999"
+          'Price must be less than or equal to 9999999'
         )
       end
 
       it 'userが紐づいていないと出品できない' do
         @product.user = nil
         @product.valid?
-        expect(@product.errors.full_messages).to include("User must exist")
+        expect(@product.errors.full_messages).to include('User must exist')
       end
     end
   end
