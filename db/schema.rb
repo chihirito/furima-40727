@@ -71,15 +71,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_17_083948) do
   create_table "products", charset: "utf8", force: :cascade do |t|
     t.string "name", null: false
     t.text "description", null: false
+    t.integer "category_id", null: false
+    t.integer "condition_id", null: false
+    t.integer "shipping_fee_id", null: false
+    t.integer "prefecture_id", null: false
+    t.integer "shipping_duration_id", null: false
     t.integer "price", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "category_id"
-    t.integer "condition_id"
-    t.integer "shipping_fee_id"
-    t.integer "prefecture_id"
-    t.integer "shipping_duration_id"
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
@@ -118,11 +118,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_17_083948) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.string "last_name"
-    t.string "first_name"
-    t.string "last_name_kana"
-    t.string "first_name_kana"
-    t.date "birth_date"
+    t.string "last_name", null: false
+    t.string "first_name", null: false
+    t.string "last_name_kana", null: false
+    t.string "first_name_kana", null: false
+    t.date "birth_date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
