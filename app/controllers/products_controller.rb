@@ -3,7 +3,11 @@ class ProductsController < ApplicationController
   # before_action :move_to_index, except: [:index, :show]
 
   def index
-    #@product = Product.all
+    @products = Product.order(created_at: :desc)
+  end
+
+  def show
+    #@product = Product.find(params[:id])
   end
 
   def new
@@ -32,9 +36,6 @@ class ProductsController < ApplicationController
   # product = Product.find(params[:id])
   # product.update(item_params)
   # redirect_to root_path
-  # end
-
-  # def show
   # end
 
   private
