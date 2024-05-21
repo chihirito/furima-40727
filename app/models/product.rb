@@ -10,7 +10,7 @@ class Product < ApplicationRecord
   }
 
   def sold_out?
-    orders.exists?
+    #orders.exists?
   end
 
   def shipping_fee_text
