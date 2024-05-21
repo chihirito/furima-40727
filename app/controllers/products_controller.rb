@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  # before_action :move_to_index, except: [:index, :show]
+  before_action :move_to_index, except: [:index, :show, :new, :create]
 
   def index
     @products = Product.order(created_at: :desc)
@@ -33,11 +33,14 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
-  # def update
-  # product = Product.find(params[:id])
-  # product.update(item_params)
-  # redirect_to root_path
-  # end
+  def update
+    @product = Product.find(params[:id])
+    if @product.update(product_params)
+      redirect_to product_path(@product)
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
 
   private
 
@@ -46,9 +49,10 @@ class ProductsController < ApplicationController
                                     :prefecture_id, :shipping_duration_id, :price).merge(user_id: current_user.id)
   end
 
-  # def move_to_index
-  # return if user_signed_in?
-
-  #  redirect_to action: :index
-  # end
+  def move_to_index
+    @product = Product.find(params[:id])
+    unless user_signed_in? && current_user == @product.user
+      redirect_to root_path
+    end
+  end
 end
