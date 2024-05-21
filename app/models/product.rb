@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
   belongs_to :user
-  has_many :orders
+  #has_many :orders
   has_one_attached :image
   belongs_to :shipping_fee
 
@@ -10,7 +10,7 @@ class Product < ApplicationRecord
   }
 
   def sold_out?
-    orders.exists?
+    #orders.exists?
   end
 
   def shipping_fee_text
