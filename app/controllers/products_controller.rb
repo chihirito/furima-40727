@@ -1,13 +1,13 @@
 class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :move_to_index, except: [:index, :show, :new, :create]
+  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :move_to_index, except: [:index, :show]
 
   def index
     @products = Product.order(created_at: :desc)
   end
 
   def show
-    @product = Product.find(params[:id])
   end
 
   def new
@@ -30,11 +30,9 @@ class ProductsController < ApplicationController
   # end
 
   def edit
-    @product = Product.find(params[:id])
   end
 
   def update
-    @product = Product.find(params[:id])
     if @product.update(product_params)
       redirect_to product_path(@product)
     else
@@ -43,6 +41,10 @@ class ProductsController < ApplicationController
   end
 
   private
+
+  def set_product
+    @product = Product.find(params[:id])
+  end
 
   def product_params
     params.require(:product).permit(:nickname, :image, :name, :description, :category_id, :condition_id, :shipping_fee_id,
