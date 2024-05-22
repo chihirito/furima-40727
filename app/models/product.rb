@@ -1,8 +1,9 @@
 class Product < ApplicationRecord
   belongs_to :user
-  #has_many :orders
+  has_one :order
   has_one_attached :image
   belongs_to :shipping_fee
+  has_many :shipments, through: :order
 
   SHIPPING_FEES = {
     1 => '送料込み(出品者負担)',
