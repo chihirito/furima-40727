@@ -24,7 +24,7 @@ RSpec.describe PurchaseForm, type: :model do
       it 'postal_codeにハイフンが含まれていないと購入できない' do
         @purchase_form.postal_code = '1234567'
         @purchase_form.valid?
-        expect(@purchase_form.errors.full_messages).to include("Postal code is invalid. Enter it as follows (e.g. 123-4567)")
+        expect(@purchase_form.errors.full_messages).to include('Postal code is invalid. Enter it as follows (e.g. 123-4567)')
       end
 
       it 'prefecture_idが1では購入できない' do
@@ -54,19 +54,19 @@ RSpec.describe PurchaseForm, type: :model do
       it 'phone_numberが10桁未満では購入できない' do
         @purchase_form.phone_number = '090123456'
         @purchase_form.valid?
-        expect(@purchase_form.errors.full_messages).to include("Phone number is invalid. Input only number")
+        expect(@purchase_form.errors.full_messages).to include('Phone number is invalid. Input only number')
       end
 
       it 'phone_numberが12桁以上では購入できない' do
         @purchase_form.phone_number = '090123456789'
         @purchase_form.valid?
-        expect(@purchase_form.errors.full_messages).to include("Phone number is invalid. Input only number")
+        expect(@purchase_form.errors.full_messages).to include('Phone number is invalid. Input only number')
       end
 
       it 'phone_numberにハイフンが含まれていると購入できない' do
         @purchase_form.phone_number = '090-1234-5678'
         @purchase_form.valid?
-        expect(@purchase_form.errors.full_messages).to include("Phone number is invalid. Input only number")
+        expect(@purchase_form.errors.full_messages).to include('Phone number is invalid. Input only number')
       end
 
       it 'tokenが空では購入できない' do

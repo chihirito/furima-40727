@@ -150,7 +150,8 @@
                 <div class='item-price'>
                   <span><%= product.price %>円<br>
                   <%# ⑤商品の配送料負担 %>
-                  <%= product.shipping_fee.name %></span>
+                  <div class='item-shipping-fee'>
+                   <%= product.shipping_fee.name %></span>
                   <div class='star-btn'>
                     <%= image_tag "star.png", class:"star-icon" %>
                     <span class='star-count'>0</span>
