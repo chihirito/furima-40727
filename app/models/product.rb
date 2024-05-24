@@ -1,30 +1,17 @@
 class Product < ApplicationRecord
+  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :user
-  #has_many :orders
+  has_one :order
   has_one_attached :image
   belongs_to :shipping_fee
-
-  SHIPPING_FEES = {
-    1 => '送料込み(出品者負担)',
-    2 => '着払い(購入者負担)'
-  }
-
-  def sold_out?
-    #orders.exists?
-  end
-
-  def shipping_fee_text
-    SHIPPING_FEES[self.shipping_fee_id]
-  end
-
-
-  extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
   belongs_to :condition
   belongs_to :prefecture
   belongs_to :shipping_duration
-  belongs_to :shipping_fee
-  has_one_attached :image
+
+  def sold_out?
+    order.present?
+  end
 
   validates :image, presence: { message: "can't be blank" }
   validates :name, presence: { message: "can't be blank" }
