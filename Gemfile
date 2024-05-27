@@ -92,3 +92,4 @@ gem 'image_processing', '~> 1.2'
 gem "rubocop-rspec", "~> 2.29"
 gem 'payjp'
 gem 'gon'
+gem "aws-sdk-s3", require: false
