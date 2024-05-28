@@ -59,6 +59,11 @@ group :development, :test do
   gem 'rubocop-factory_bot'
   gem 'rubocop-rails'
   gem 'rubocop-rspec_rails'
+  gem 'capistrano'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano3-unicorn'
 
 end
 
